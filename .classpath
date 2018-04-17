@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/cucumber-core-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/cucumber-html-0.2.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/cucumber-java-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/cucumber-junit-2.3.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/cucumber-jvm-deps-1.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/gherkin-5.0.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/tag-expressions-1.1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/mxparser.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/EvalEx-2.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/commons-cli-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/commons-csv-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/joda-convert-2.0.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/ken/eclipse-workspace/CucumberPackages/joda-time-2.9.9.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
