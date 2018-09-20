@@ -39,7 +39,6 @@ public class Logging {
 		number_warnings = 0; 
 	}
 	public static void printErrors() {
-		System.out.println("Somebody calling print");
 		li.printErrors();
 	}
 	public static boolean isErrorStringInLog(String errorString) {

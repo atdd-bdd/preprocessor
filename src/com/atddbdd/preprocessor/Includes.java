@@ -22,7 +22,6 @@ public class Includes {
 						throw new PreprocessorException(ErrorStrings.CANNOT_READ_INCLUDE + " " + pathin);
 				}
 				else {
-					System.out.println("Reading CSV");
 					Pathname path = Configuration.relativeIncludeDirectory.add(pathin);
 					output = CSVFileParser.parseIntoTable(path);
 				}

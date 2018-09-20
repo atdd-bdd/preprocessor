@@ -25,7 +25,7 @@ public class FileOperations {
 		out.getParentFile().mkdirs(); 
 		return write(out, arg1); 
 	}
-	public static String readNoPath(Pathname filename) {
+		public static String readNoPath(Pathname filename) {
 		File in = new File(filename.toString()); 	
 		return read(in); 
 	}

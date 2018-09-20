@@ -1,0 +1,13 @@
+Feature: Multi-line Defines in Preprocessor
+@random
+Scenario: Check intermediate file 
+When processing:
+""" 
+#define X ###
+First line 
+Second line
+###
+"""
+Then defines are:
+|Define|Value|
+|X|First line###Secondline| 

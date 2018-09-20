@@ -1,6 +1,7 @@
 package com.atddbdd.preprocessor.tests;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.List;
@@ -81,6 +82,7 @@ public class StepDefinitionsLogging {
 	@Then("^check for error reported as (.+)$")
 	public void check_for_error_reported_as(String errorString) throws Exception {
 		boolean result = Logging.isErrorStringInLog(errorString);
+		assertFalse(result); 
 	}
 	
 

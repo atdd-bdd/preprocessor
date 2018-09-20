@@ -1,5 +1,9 @@
 package com.atddbdd.preprocessor.tests;
 
+
+
+
+
 import com.atddbdd.preprocessor.CSVFileParser;
 import com.atddbdd.preprocessor.Configuration;
 import com.atddbdd.preprocessor.ConfigurationValues;
@@ -13,7 +17,7 @@ import com.atddbdd.preprocessor.expressions.ExpressionCalculator;
 
 import cucumber.api.java.en.Given;
 
-public class StepDefinitionsCoverage {
+@SuppressWarnings("unused") public class StepDefinitionsCoverage {
 	@Given("^Unused Methods$")
 	public void unused_Methods() throws Exception {
 		DefineValues dv = new DefineValues("define","value");

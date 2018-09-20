@@ -62,6 +62,8 @@ public class StepDefinitions {
 
 	@Then("^result is:$")
 	public void result_is(String arg1) throws Exception {
+		System.out.println("Expected " + arg1);
+		System.out.println("Result " + output);
 		assertEquals(arg1, output);
 	}
 

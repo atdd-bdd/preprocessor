@@ -1,0 +1,15 @@
+Feature: File Directive 
+
+Scenario:  Add file directive to input file 
+
+Given feature file folder/TestFeature2.feature exists with: 
+"""
+Feature: Test Feature
+"""
+When main program run 
+Then feature file folder/TestFeature2.feature contains 
+"""
+#file "folder/TestFeature2.feature" 
+Feature: Test Feature
+"""
+

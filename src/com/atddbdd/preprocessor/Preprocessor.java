@@ -1,5 +1,7 @@
 package com.atddbdd.preprocessor;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import java.util.regex.Matcher;
@@ -12,11 +14,10 @@ import com.atddbdd.preprocessor.localfunctions.TodayOffsetBy;
 
 public class Preprocessor {
 	static final String INCLUDE = "#include";
-	static final String DEFINE = "#define";
 	static final String WHITESPACE = "\\s+";
-	static final String DEFINE_REGEX = "([\\w_\\.]+)";
 
-	private DefineCollection defineCollection = new DefineCollection();
+
+	protected DefineCollection defineCollection = new DefineCollection();
 
 	public Preprocessor() {
 		FunctionCalculator.addFunction(new Today());
@@ -45,7 +46,7 @@ public class Preprocessor {
 	}
 
 	public String replaceDefines(String lines) {
-		String regex = DEFINE_REGEX;
+		String regex = DefineCollection.DEFINE_REGEX;
 		Pattern p = Pattern.compile(regex);
 		Matcher m = p.matcher(lines);
 		StringReplacer sr = new StringReplacer(lines);
@@ -57,24 +58,84 @@ public class Preprocessor {
 		String output = sr.finishAndReturnString();
 		return output;
 	}
+	private static final String lineRegex = "(.*?)(\\n|\\r\\n|$)";
+	private static Pattern linePattern = Pattern.compile(lineRegex);
 
-	private String getDefines(String lines) {
-		String regex = "("+DEFINE+".*?)(\\n|\\r\\n|$)";
-		Pattern p = Pattern.compile(regex);
-		Matcher m = p.matcher(lines);
-		StringReplacer sr = new StringReplacer(lines);
+	protected String getDefines(String lines)  {
+		ArrayList<String> lineCollection = new ArrayList<String>(); 
+		Matcher m = linePattern.matcher(lines);
 		while (m.find()) {
-			sr.replaceAndCopyPrevious(m.start(), m.end(), "");
-			String defineLine = lines.substring(m.start(), m.end());
-			processDefineLine(defineLine);
+			lineCollection.add(lines.substring(m.start(), m.end()));
 		}
-		String output = sr.finishAndReturnString();
+		AlternativeStringReplacer asr = new AlternativeStringReplacer(); 
+		Iterator<String> iterator = lineCollection.iterator(); 
+		while (iterator.hasNext()) {	
+			String line = iterator.next(); 	
+			String unusedLine = checkForDefine(line, iterator); 
+			if (unusedLine != null) 
+				asr.copy(unusedLine);
+		}
+		String output = asr.ReturnString(); 
 		return output;
 	}
 
-	private void processDefineLine(String defineLine) {
-		defineCollection.processDefineLine(defineLine);
+	private static final String DEFINE = "#(define|Define)";
+	private static final String DEFINE_START = "efine"; 
+	private static final String defineLineRegex = DEFINE + "\\s" + DefineCollection.DEFINE_REGEX + "\\s+(.*?)$";
+	private static final String defineDefineRegex = DEFINE + "\\s*$";
+	private static final Pattern defineLinePattern = Pattern.compile(defineLineRegex);
+	private static final Pattern defineDefinePattern = Pattern.compile(defineDefineRegex);
+
+	private String checkForDefine(String line, Iterator<String> iterator) {
+		if (!line.contains(DEFINE_START))
+			return line; 
+		Matcher m = defineLinePattern.matcher(line);
+		if (m.find()) {
+			// Full define name value 
+			String define = m.group(2); 
+			String value = m.group(3).trim();
+			if (value == null)
+				value = ""; 
+			defineCollection.add(define, value);
+			return null; 
+			}
+		else {
+			Matcher m1 = defineDefinePattern.matcher(line);
+			if (m1.find()) {
+				return processMultiDefinitions(line, iterator); 
+				}
+			else 
+				return line; 
+		}
 	}
+
+	static final String defineTableLineRegex = "\\|\\s*"+DefineCollection.DEFINE_REGEX 
+			+ "\\s*\\|\\s*(.*?)\\s*\\|"; 
+	static final Pattern defineTablePattern = Pattern.compile(defineTableLineRegex);
+
+	private String processMultiDefinitions(String line, Iterator<String> iterator) {
+		// get the defines 
+		String aline = line; 
+		while (iterator.hasNext()) {
+			aline = iterator.next(); 
+			Matcher m = defineTablePattern.matcher(aline);
+			if (m.find()) {
+				String define = m.group(1);
+				String value = m.group(2);
+				if (value == null)
+					value = ""; 
+				else 
+					value = value.trim(); 
+				defineCollection.add(define, value);
+				}
+			else 
+				return aline; 
+		}
+		return "";
+	}
+
+	
+
 
 	private String getIncludes(String lines) {
 		int count = 0;

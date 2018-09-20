@@ -12,7 +12,7 @@ import com.atddbdd.preprocessor.expressions.ExpressionCalculator;
 
 public class DefineCollection {
 	 private Map<String, String> defines = new HashMap<String, String>();
-
+	static final String DEFINE_REGEX = "([\\w_\\.]+)";
 	public void clear() {
 		defines.clear(); 
 		
@@ -75,7 +75,7 @@ public class DefineCollection {
 			if (count >= Configuration.maximum_recursion_includes)
 				return expression; 
 			Logging.debug("Replacing " + expression + " count " + count);
-			String regex = Preprocessor.DEFINE_REGEX; 
+			String regex = DefineCollection.DEFINE_REGEX; 
 			Pattern p = Pattern.compile(regex);
 			Matcher m = p.matcher(expression); 
 			StringReplacer sr = new StringReplacer(expression); 
@@ -107,19 +107,5 @@ public class DefineCollection {
 			}
 			return true;
 		}
-		void processDefineLine(String defineLine) {
-			String regex = "^\\s*"+Preprocessor.DEFINE+"\\s+" + Preprocessor.DEFINE_REGEX + "\\s+(.*?)$";
-			Pattern p = Pattern.compile(regex);
-			Matcher m = p.matcher(defineLine);
-			if (m.find()) {
-				String define = m.group(1);
-				String value = m.group(2).trim();
-				if (value == null)
-					value = ""; 
-				add(define, value);
-			} else {
-				Logging.error(ErrorStrings.NO_DEFINE_FOR_LINE + defineLine);
-			}
-		
-		}
+			
 }

@@ -12,7 +12,7 @@ III. If define replacement starts with =, then
 	If defines or local functions not found, then expression remains the same 
 	If expression cannot be evaluated, then expression remains the same 
 
-
+@test
 Scenario: Intermediate Files in creating Defines 
 When processing:
 """ 

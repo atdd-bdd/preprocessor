@@ -2470,7 +2470,12 @@ formatter.feature({
 formatter.scenario({
   "name": "Intermediate Files in creating Defines",
   "description": "",
-  "keyword": "Scenario"
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@test"
+    }
+  ]
 });
 formatter.before({
   "status": "passed"
@@ -3989,6 +3994,274 @@ formatter.step({
 });
 formatter.match({
   "location": "StepDefinitionsLogging.error_reported_as(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.uri("features/definegroup.feature");
+formatter.feature({
+  "name": "Multi Defines in Preprocessor",
+  "description": "",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Intermediate Files in creating Defines",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@test"
+    }
+  ]
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "processing:",
+  "keyword": "When ",
+  "doc_string": {
+    "value": "First line\n#define\n|X|12|\n|Y|10| \nValue is X \nLast line"
+  }
+});
+formatter.match({
+  "location": "StepDefinitions.processing(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "defines are:",
+  "rows": [
+    {
+      "cells": [
+        "Define",
+        "Value"
+      ]
+    },
+    {
+      "cells": [
+        "X",
+        "12"
+      ]
+    },
+    {
+      "cells": [
+        "Y",
+        "10"
+      ]
+    }
+  ],
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "StepDefinitions.defines_are(DefineValues\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "No value for define results in empty string",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@test"
+    }
+  ]
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "processing:",
+  "keyword": "When ",
+  "doc_string": {
+    "value": "First line\n#define\n|X||\nValue is X \nLast line"
+  }
+});
+formatter.match({
+  "location": "StepDefinitions.processing(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "defines are:",
+  "rows": [
+    {
+      "cells": [
+        "Define",
+        "Value"
+      ]
+    },
+    {
+      "cells": [
+        "X",
+        ""
+      ]
+    }
+  ],
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "StepDefinitions.defines_are(DefineValues\u003e)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Two defines are replaced in file",
+  "description": "",
+  "keyword": "Scenario",
+  "tags": [
+    {
+      "name": "@test"
+    }
+  ]
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "processing:",
+  "keyword": "When ",
+  "doc_string": {
+    "value": "First line\n#define\n|X|12|\n|Y|10| \nValue is X\nValue is Y\nLast line"
+  }
+});
+formatter.match({
+  "location": "StepDefinitions.processing(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "result is:",
+  "keyword": "Then ",
+  "doc_string": {
+    "value": "First line\nValue is 12\nValue is 10\nLast line"
+  }
+});
+formatter.match({
+  "location": "StepDefinitions.result_is(String)"
 });
 formatter.result({
   "status": "passed"

@@ -20,7 +20,7 @@ import cucumber.api.junit.Cucumber;
 public class CucumberDriver {
 
 
-	void test() {
+	public void test() {
 		
 	}
 
