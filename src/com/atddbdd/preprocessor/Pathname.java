@@ -3,7 +3,7 @@ package com.atddbdd.preprocessor;
 import java.io.File;
 
 public class Pathname {
-	private static final String PATHNAME_REGEX = "[\\w_\\\\.-\\\\/]+";
+	private static final String PATHNAME_REGEX = "[ \\w_\\\\.-\\\\/]+";
 	public static final String BAD_PATHNAME = "Bad Pathname"; 
 	String value; 
 	public Pathname(String filename) throws PreprocessorException 

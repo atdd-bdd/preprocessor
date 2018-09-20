@@ -1,6 +1,7 @@
 package com.atddbdd.preprocessor.tests;
 
 
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
@@ -19,7 +20,7 @@ import cucumber.api.junit.Cucumber;
 
 public class CucumberDriver {
 
-
+@Test
 	public void test() {
 		
 	}

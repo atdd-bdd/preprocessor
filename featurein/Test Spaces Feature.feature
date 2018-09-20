@@ -1,12 +1,12 @@
 Feature: Test Feature
+#include "TestInclude.txt" 
 Scenario: One
-Given value is 1
+Given value is X
 When processed
-Then result is 4
+Then result is Y
 Scenario Outline: Two 
 Given value is <FieldOne>
 When processed 
 Then result is <FieldTwo> 
 Examples:
-|FieldOne|FieldTwo|
-|1|2|
+#include "TestCSV.csv"
